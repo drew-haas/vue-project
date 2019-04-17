@@ -2,7 +2,7 @@
 
 Testing out Vue
 
-Demo Here: [https://drew-haas.github.io/vue-project/]
+Demo Here: https://drew-haas.github.io/vue-project/
 
 ## Project setup
 ```
