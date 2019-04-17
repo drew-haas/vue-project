@@ -17,9 +17,9 @@
       <div class="project-inner-items container">
         <h2 class="project-inner-title inner-item">{{ project.title }}</h2>
         <p class="project-inner-subtitle inner-item">{{ project.subtitle }}</p>
-        <div class="project-items inner-item">
+        <div class="project-items">
           <div
-            class="project-item"
+            class="project-item inner-item"
             v-for="item in project.items"
             :key="item.id"
           >
