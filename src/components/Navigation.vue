@@ -29,6 +29,7 @@
 </script>
 
 <style lang="scss">
+/* eslint-disable */
 	.navigation {
 		margin: 24px auto 0;
 

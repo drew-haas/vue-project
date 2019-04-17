@@ -379,6 +379,7 @@ export default {
 </script>
 
 <style lang="scss">
+/* eslint-disable */
 $green-light: #42b983;
 
 .project-wrapper.container {
