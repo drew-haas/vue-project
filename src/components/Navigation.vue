@@ -2,7 +2,9 @@
   <div class="navigation">
     <div class="container">
       <div class="logo">
-        <img src="../assets/logo.png" alt="Vue Logo" />
+        <router-link to="/">
+          <img src="../assets/logo.png" alt="Vue Logo" />
+        </router-link>
       </div>
       <ul class="navigation-list">
         <li
@@ -10,7 +12,7 @@
           v-bind:key="item.id"
           class="navigation-list-item"
         >
-          <a :href="item.path" class="navigation-list-link">{{ item.text }}</a>
+          <router-link :to="item.path" class="navigation-list-link">{{ item.text }}</router-link>
         </li>
       </ul>
     </div>
@@ -24,7 +26,6 @@ export default {
     return {
       navItems: [
         { id: 0, text: "About", path: "/about" },
-        { id: 1, text: "Projects", path: "/projects" },
         { id: 2, text: "Contact", path: "/contact" }
       ]
     };
@@ -65,6 +66,27 @@ export default {
     padding: 5px;
     display: block;
     text-decoration: none;
+    color: $green-light;
+    position: relative;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: $green-light;
+      transition: width .3s cubic-bezier(0.86, 0, 0.07, 1);
+    }
+
+    &:hover {
+      &:after {
+        width: 100%;
+        transition: width .3s cubic-bezier(0.86, 0, 0.07, 1);
+      }
+    }
   }
 }
 </style>

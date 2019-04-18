@@ -1,8 +1,28 @@
-import Vue from "vue";
-import App from "./App.vue";
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import App from './App.vue';
+import Home from './components/Home.vue';
+import About from './components/About.vue';
+import Locations from './components/Locations.vue';
+import Contact from './components/Contact.vue';
 
 Vue.config.productionTip = false;
+Vue.use(VueRouter);
+
+const routes = [
+  { path: '/', component: Home },
+  { path: '/about', component: About },
+  { path: '/locations', component: Locations },
+  { path: '/contact', component: Contact },
+];
+
+const router = new VueRouter({
+  routes,
+  mode: 'history'
+});
 
 new Vue({
+  el: '#app',
+  router,
   render: h => h(App)
 }).$mount("#app");

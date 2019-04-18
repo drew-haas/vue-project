@@ -1,36 +1,42 @@
 <template>
-  <div id="projectWrapper" class="project-wrapper container">
-    <div
-      v-for="(project, index) in projects"
-      :key="project.id"
-      :class="'project project-' + (index + 1)"
-      v-on:click="expand(index, $event)"
-    >
+  <div id="locationWrapper">
+    <div class="hero">
+      <h1>The Cities of Critical Mass</h1>
+      <p>Personal experiment testing out Vue</p>
+    </div>
+    <div class="location-wrapper container">
       <div
-        class="project-image"
-        v-bind:style="{ 'background-image': 'url(' + project.image + ')' }"
-      ></div>
-      <div class="project-copy-container">
-        <div class="project-title">{{ project.title }}</div>
-        <div class="project-subtitle">{{ project.subtitle }}</div>
-      </div>
-      <div class="project-inner-items container">
-        <h2 class="project-inner-title inner-item">{{ project.title }}</h2>
-        <p class="project-inner-subtitle inner-item">{{ project.subtitle }}</p>
-        <div class="project-items">
-          <div
-            class="project-item inner-item"
-            v-for="item in project.items"
-            :key="item.id"
-          >
-            <div class="project-item-title">
-              <b>{{ item.title }}</b>
+        v-for="(location, index) in locations"
+        :key="location.id"
+        :class="'location location-' + (index + 1)"
+        v-on:click="expand(index, $event)"
+      >
+        <div
+          class="location-image"
+          v-bind:style="{ 'background-image': 'url(' + location.image + ')' }"
+        ></div>
+        <div class="location-copy-container">
+          <div class="location-title">{{ location.title }}</div>
+          <div class="location-subtitle">{{ location.subtitle }}</div>
+        </div>
+        <div class="location-inner-items container">
+          <h2 class="location-inner-title inner-item">{{ location.title }}</h2>
+          <p class="location-inner-subtitle inner-item">{{ location.subtitle }}</p>
+          <div class="location-items">
+            <div
+              class="location-item inner-item"
+              v-for="item in location.items"
+              :key="item.id"
+            >
+              <div class="location-item-title">
+                <b>{{ item.title }}</b>
+              </div>
+              <div class="location-item-info">{{ item.information }}</div>
             </div>
-            <div class="project-item-info">{{ item.information }}</div>
           </div>
         </div>
+        <div class="location-close"></div>
       </div>
-      <div class="project-close"></div>
     </div>
   </div>
 </template>
@@ -44,14 +50,16 @@ var clone,
   opening = true;
 
 export default {
-  name: "Projects",
-
+  name: "Locations",
   data: function() {
     return {
-      projects: [
+      thumbnail: {
+        title: 'This is my Thumbnail Title',
+      },
+      locations: [
         {
           id: 1,
-          image: require("../assets/img/project-calgary.jpg"),
+          image: require("../assets/img/location-calgary.jpg"),
           title: "Calgary",
           subtitle: "Stampede City",
           items: [
@@ -81,7 +89,7 @@ export default {
         },
         {
           id: 2,
-          image: require("../assets/img/project-chicago.jpg"),
+          image: require("../assets/img/location-chicago.jpg"),
           title: "Chicago",
           subtitle: "City of Big Shoulders",
           items: [
@@ -106,7 +114,7 @@ export default {
         },
         {
           id: 3,
-          image: require("../assets/img/project-cupertino.jpg"),
+          image: require("../assets/img/location-cupertino.jpg"),
           title: "Cupertino",
           subtitle: "Arroyo San José de Cupertino",
           items: [
@@ -131,7 +139,7 @@ export default {
         },
         {
           id: 4,
-          image: require("../assets/img/project-hong-kong.jpg"),
+          image: require("../assets/img/location-hong-kong.jpg"),
           title: "Hong Kong",
           subtitle: "Fragrant Harbour",
           items: [
@@ -156,7 +164,7 @@ export default {
         },
         {
           id: 5,
-          image: require("../assets/img/project-london.jpg"),
+          image: require("../assets/img/location-london.jpg"),
           title: "London",
           subtitle: "The Old Smoke",
           items: [
@@ -181,7 +189,7 @@ export default {
         },
         {
           id: 6,
-          image: require("../assets/img/project-los-angeles.jpg"),
+          image: require("../assets/img/location-los-angeles.jpg"),
           title: "Los Angeles",
           subtitle: "City of Angels",
           items: [
@@ -206,7 +214,7 @@ export default {
         },
         {
           id: 7,
-          image: require("../assets/img/project-nashville.jpg"),
+          image: require("../assets/img/location-nashville.jpg"),
           title: "Nashville",
           subtitle: "Music City",
           items: [
@@ -231,7 +239,7 @@ export default {
         },
         {
           id: 8,
-          image: require("../assets/img/project-new-york.jpg"),
+          image: require("../assets/img/location-new-york.jpg"),
           title: "New York City",
           subtitle: "The Big Apple",
           items: [
@@ -256,7 +264,7 @@ export default {
         },
         {
           id: 9,
-          image: require("../assets/img/project-san-jose.jpg"),
+          image: require("../assets/img/location-san-jose.jpg"),
           title: "San José",
           subtitle: "Chepe",
           items: [
@@ -281,7 +289,7 @@ export default {
         },
         {
           id: 10,
-          image: require("../assets/img/project-sao-paulo.jpg"),
+          image: require("../assets/img/location-sao-paulo.jpg"),
           title: "São Paulo",
           subtitle: "Terra da Garoa",
           items: [
@@ -306,7 +314,7 @@ export default {
         },
         {
           id: 11,
-          image: require("../assets/img/project-toronto.jpg"),
+          image: require("../assets/img/location-toronto.jpg"),
           title: "Toronto",
           subtitle: "The Queen City",
           items: [
@@ -338,7 +346,7 @@ export default {
       opening = true; // toggle opening variable
       el = event.target; // element to expand
       clone = el.cloneNode(true); // clone element to not mess with grid --> new element to expand
-      clone.classList.add("project-clone");
+      clone.classList.add("location-clone");
       const elRect = el.getBoundingClientRect();
       const tl = new TimelineLite({ onComplete: this.setInnerItems }); // animation timeline
 
@@ -370,17 +378,17 @@ export default {
       // hide old grid item
       el.style.opacity = 0;
 
-      clone.querySelector(".project-inner-items").style.display = "block";
+      clone.querySelector(".location-inner-items").style.display = "block";
       TweenMax.set(clone.querySelectorAll(".inner-item"), { y: "14px" });
 
       // animate old content out and new content in
-      tl.to(clone.querySelector(".project-subtitle"), 0.3, {
+      tl.to(clone.querySelector(".location-subtitle"), 0.3, {
         opacity: 0,
         y: "10px",
         ease: Power4.easeOut
       })
         .to(
-          clone.querySelector(".project-title"),
+          clone.querySelector(".location-title"),
           0.3,
           { opacity: 0, y: "10px", ease: Power4.easeOut },
           "-=0.2"
@@ -399,7 +407,7 @@ export default {
           "-=0.1"
         )
         .to(
-          clone.querySelector(".project-image"),
+          clone.querySelector(".location-image"),
           0.5,
           { height: "300px", ease: Power4.easeInOut },
           "-=0.75"
@@ -436,7 +444,7 @@ export default {
         { y: "14px", opacity: 0, ease: Power4.easeOut },
         0.1
       )
-        .to(clone.querySelector(".project-image"), 0.5, {
+        .to(clone.querySelector(".location-image"), 0.5, {
           height: "200px",
           ease: Power4.easeInOut
         })
@@ -454,13 +462,13 @@ export default {
           "-=0.5"
         )
         .to(
-          clone.querySelector(".project-title"),
+          clone.querySelector(".location-title"),
           0.3,
           { opacity: 1, y: 0, ease: Power4.easeOut },
           "-=0.2"
         )
         .to(
-          clone.querySelector(".project-subtitle"),
+          clone.querySelector(".location-subtitle"),
           0.3,
           { opacity: 1, y: 0, ease: Power4.easeOut },
           "-=0.2"
@@ -468,7 +476,7 @@ export default {
     },
 
     setInnerItems: function() {
-      var close = clone.querySelector(".project-close");
+      var close = clone.querySelector(".location-close");
 
       if (opening) {
         close.classList.add("visible"); // show close button
@@ -485,9 +493,11 @@ export default {
 
 <style lang="scss">
 /* eslint-disable */
-$green-light: #42b983;
-
-.project-wrapper.container {
+.hero {
+  display: block;
+  margin-bottom: 4em;
+}
+.location-wrapper.container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 40px;
@@ -506,7 +516,7 @@ $green-light: #42b983;
   }
 }
 
-.project {
+.location {
   min-height: 270px;
   text-align: left;
   border-radius: 4px;
@@ -545,12 +555,12 @@ $green-light: #42b983;
   &-inner-items {
     display: none;
 
-    h2.project-inner-title {
+    h2.location-inner-title {
       margin: 0 0 10px 0;
       font-size: 50px;
     }
 
-    .project-inner-subtitle {
+    .location-inner-subtitle {
       margin: 0 0 40px 0;
       font-size: 24px;
     }
@@ -608,7 +618,8 @@ $green-light: #42b983;
   opacity: 0;
 }
 
-.project-clone {
+.location-clone {
   overflow: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 </style>
