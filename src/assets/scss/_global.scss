@@ -1,0 +1,66 @@
+// ============================================
+// Global Styles
+// ============================================
+h1 {
+  font-size: 11vw;
+  line-height: .9;
+  color: $default--secondary;
+  opacity: .7;
+
+  @media screen and (min-width: $xlarge) {
+    font-size: 160px;
+  }
+}
+
+h2 {
+	font-size: 7vw;
+  line-height: .9;
+  letter-spacing: -3px;
+  margin: 0;
+  color: $default--secondary;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+	min-height: 100vh;
+
+	&.disable-scroll {
+		overflow: hidden;
+	}
+
+	&.dark-mode {
+		background-color: grayscale($color: #000000);
+	}
+}
+
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $default--type-primary;
+  overflow: auto;
+}
+
+.container {
+  max-width: 1400px;
+  width: 100%;
+  padding: 0 30px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.section {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.subtitle {
+  max-width: 700px;
+  font-size: 34px;
+}

@@ -1,2 +1,21 @@
+// ============================================
+// Variables
+// ============================================
+
 // Colors
-$green-light: #42b983;
+$default--primary: #fff;
+$default--secondary: #ccc;
+$default--accent: #f33;
+$default--type-primary: #242424;
+
+$darkmode--primary: #000;
+$darkmode--secondary: #242424;
+$darkmode--accent: #f33;
+$darkmode--type-primary: #fff;
+
+// Breakpoints
+$xlarge: 1400px;
+$large: 1200px;
+$medium: 900px;
+$small: 767px;
+$xsmall: 480px;

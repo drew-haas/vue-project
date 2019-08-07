@@ -1,18 +1,20 @@
 <template>
   <div class="navigation">
     <div class="container">
-      <div class="logo">
-        <router-link to="/">
-          <img src="../assets/logo.png" alt="Vue Logo" />
+      <!-- <div class="logo">
+        <router-link :to="{ name: 'Home' }">
+          <img src="../assets/img/logo.png" alt="Critical Mass Logo" />
         </router-link>
-      </div>
+      </div> -->
       <ul class="navigation-list">
         <li
           v-for="item in navItems"
           v-bind:key="item.id"
           class="navigation-list-item"
         >
-          <router-link :to="item.path" class="navigation-list-link">{{ item.text }}</router-link>
+          <router-link :to="{ name: item.name }" class="navigation-list-link">{{
+            item.name
+          }}</router-link>
         </li>
       </ul>
     </div>
@@ -25,8 +27,9 @@ export default {
   data: function() {
     return {
       navItems: [
-        { id: 0, text: "About", path: "/about" },
-        { id: 2, text: "Contact", path: "/contact" }
+        { id: 0, name: "Home" },
+        { id: 1, name: "Blog" },
+        { id: 2, name: "Projects" }
       ]
     };
   }
@@ -53,6 +56,7 @@ export default {
   display: flex;
   justify-content: flex-end;
   margin: 0;
+  width: 100%;
 
   &-item {
     margin-right: 1em;
@@ -66,27 +70,31 @@ export default {
     padding: 5px;
     display: block;
     text-decoration: none;
-    color: $green-light;
+    color: $default--accent;
     position: relative;
 
     &:after {
-      content: '';
+      content: "";
       display: block;
       position: absolute;
       bottom: 0;
       left: 0;
       width: 0;
       height: 2px;
-      background-color: $green-light;
-      transition: width .3s cubic-bezier(0.86, 0, 0.07, 1);
+      background-color: $default--accent;
+      transition: width 0.3s cubic-bezier(0.86, 0, 0.07, 1);
     }
 
     &:hover {
       &:after {
         width: 100%;
-        transition: width .3s cubic-bezier(0.86, 0, 0.07, 1);
+        transition: width 0.3s cubic-bezier(0.86, 0, 0.07, 1);
       }
     }
   }
+}
+
+.router-link-exact-active {
+  color: $default--type-primary;
 }
 </style>
