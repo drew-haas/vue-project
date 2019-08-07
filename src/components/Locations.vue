@@ -1,26 +1,17 @@
 /* eslint-disable */
 <template>
-	<div id="locations">
-		<div class="location-container container">
-			<div v-for="(item, index) in page.fields.offices" :key="item.id" :class="'location location-' + (index + 1)" v-on:click="expand(index, $event)">
-				<div class="location-image" v-bind:style="{ 'background-image': 'url(' + item.image + ')' }"></div>
+	<div class="location-container">
+		<div class="card-container container">
+			<div v-for="(item, index) in page.fields.offices" :key="item.id" :class="'card location location-' + (index + 1)" v-on:click="expand(index, $event)">
+				<div class="card-image location-image" v-bind:style="{ 'background-image': 'url(' + item.image + ')' }"></div>
 
 				<div class="location-copy-container">
-					<div class="location-title">{{ item.title }}</div>
+					<div class="card-title  location-title">{{ item.title }}</div>
 				</div>
 
 				<div class="location-inner-items container">
 					<h2 class="location-inner-title inner-item">{{ item.title }}</h2>
 					<p class="inner-item">{{ item.phone }}</p>
-
-					<!-- <div class="location-items">
-						<div class="location-item inner-item" v-for="item in location.items" :key="item.id">
-							<div class="location-item-title">
-								<b>{{ item.title }}</b>
-							</div>
-							<div class="location-item-info">{{ item.information }}</div>
-						</div>
-					</div> -->
 				</div>
 
 				<div class="location-close"></div>
@@ -421,82 +412,7 @@ export default {
 
 <style lang="scss">
 /* eslint-disable */
-.location-container.container {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
-	grid-gap: 40px;
-	padding: 0;
-
-	@media screen and (max-width: 1024px) {
-		grid-template-columns: 1fr 1fr 1fr;
-	}
-
-	@media screen and (max-width: 767px) {
-		grid-template-columns: 1fr 1fr;
-	}
-
-	@media screen and (max-width: 500px) {
-		grid-template-columns: 1fr;
-	}
-}
-
-.location {
-	text-align: left;
-	overflow: hidden;
-	box-shadow: 20px 20px 29px -20px rgba(0, 0, 0, 0.3);
-	background-color: #fff;
-
-	&:not(.location-clone):hover {
-		color: $default--accent;
-		cursor: pointer;
-	}
-
-	body.dark-mode & {
-		background-color: $darkmode--primary;
-		color: #fff;
-	}
-
-	&-title,
-	&-image,
-	&-subtitle,
-	&-copy-container {
-		pointer-events: none;
-	}
-
-	&-title {
-		font-weight: bold;
-	}
-
-	&-image {
-		height: 200px;
-		background-color: gainsboro;
-		background-size: cover;
-		background-position: center;
-	}
-
-	&-copy-container {
-		padding: 16px 12px 20px;
-	}
-
-	&-item {
-		max-width: 300px;
-		margin-bottom: 20px;
-	}
-
-	&-inner-items {
-		display: none;
-
-		h2.location-inner-title {
-			margin: 0 0 10px 0;
-			font-size: 50px;
-		}
-
-		.location-inner-subtitle {
-			margin: 0 0 40px 0;
-			font-size: 24px;
-		}
-	}
-
+.location, .card {
 	&-close {
 		display: none;
 		width: 40px;

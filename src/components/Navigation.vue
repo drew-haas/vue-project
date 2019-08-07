@@ -1,20 +1,9 @@
 <template>
   <div class="navigation">
     <div class="container">
-      <!-- <div class="logo">
-        <router-link :to="{ name: 'Home' }">
-          <img src="../assets/img/logo.png" alt="Critical Mass Logo" />
-        </router-link>
-      </div> -->
       <ul class="navigation-list">
-        <li
-          v-for="item in navItems"
-          v-bind:key="item.id"
-          class="navigation-list-item"
-        >
-          <router-link :to="{ name: item.name }" class="navigation-list-link">{{
-            item.name
-          }}</router-link>
+        <li v-for="item in navItems" v-bind:key="item.id" class="navigation-list-item">
+          <router-link :to="{ name: item.name }" class="navigation-list-link">{{ item.name }}</router-link>
         </li>
       </ul>
     </div>
@@ -96,5 +85,9 @@ export default {
 
 .router-link-exact-active {
   color: $default--type-primary;
+  
+  body.dark-mode & {
+		color: #fff;
+	}
 }
 </style>

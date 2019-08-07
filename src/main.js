@@ -7,6 +7,7 @@ import Blog from "@/components/Blog.vue";
 import BlogPost from "@/components/BlogPost.vue";
 import Locations from "@/components/Locations.vue";
 import Projects from "@/components/Projects.vue";
+import Project from "@/components/Project.vue";
 import Contact from "@/components/Contact.vue";
 import "@/assets/scripts/filters.js";
 
@@ -23,7 +24,8 @@ const routes = [
   { path: "/blog/:slug", name: "BlogPost", component: BlogPost },
   { path: "/locations", name: "Locations", component: Locations },
   { path: "/contact", name: "Contact", component: Contact },
-  { path: "/projects", name: "Projects", component: Projects }
+  { path: "/projects", name: "Projects", component: Projects },
+  { path: "/projects/:slug", name: "Project", component: Project }
 ];
 
 const router = new VueRouter({

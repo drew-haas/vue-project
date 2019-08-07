@@ -6,6 +6,7 @@ h1 {
   line-height: .9;
   color: $default--secondary;
   opacity: .7;
+  margin-bottom: 30px;
 
   @media screen and (min-width: $xlarge) {
     font-size: 160px;
@@ -13,11 +14,16 @@ h1 {
 }
 
 h2 {
-	font-size: 7vw;
+  font-size: 7vw;
+  font-weight: lighter;
   line-height: .9;
   letter-spacing: -3px;
   margin: 0;
   color: $default--secondary;
+}
+
+a {
+  color: $default--accent;
 }
 
 html,
@@ -63,4 +69,8 @@ body {
 .subtitle {
   max-width: 700px;
   font-size: 34px;
+
+  body.dark-mode & {
+		color: #fff;
+	}
 }

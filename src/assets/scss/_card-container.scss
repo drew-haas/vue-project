@@ -1,0 +1,89 @@
+// ============================================
+// Cards Grid
+// ============================================
+.card-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-gap: 40px;
+	padding: 60px 0 0;
+
+	@media screen and (max-width: 1024px) {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+
+	@media screen and (max-width: 767px) {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	@media screen and (max-width: 500px) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.location, .card {
+	text-align: left;
+	overflow: hidden;
+	box-shadow: 20px 20px 29px -20px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+
+  a {
+    text-decoration: none;
+    color: $default--type-primary;
+  }
+
+	&:not(.location-clone):hover {
+		color: $default--accent;
+    cursor: pointer;
+
+    a {
+      color: $default--accent;
+    }
+  }
+
+	body.dark-mode & {
+		background-color: $darkmode--primary;
+		color: #fff;
+	}
+
+	&-title,
+	&-image,
+	&-subtitle,
+	&-copy-container {
+		pointer-events: none;
+	}
+
+	&-title {
+		font-weight: bold;
+	}
+
+	&-image {
+    height: 200px;
+    width: 100%;
+		background-color: gainsboro;
+		background-size: cover;
+		background-position: center;
+	}
+
+	&-copy-container {
+		padding: 16px 12px 20px;
+	}
+
+	&-item {
+		max-width: 300px;
+		margin-bottom: 20px;
+	}
+
+	&-inner-items {
+		display: none;
+
+		h2.location-inner-title {
+			margin: 0 0 10px 0;
+			font-size: 50px;
+		}
+
+		.location-inner-subtitle {
+			margin: 0 0 40px 0;
+			font-size: 24px;
+		}
+  }
+}

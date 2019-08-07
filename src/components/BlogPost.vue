@@ -1,7 +1,7 @@
 <template>
   <div class="blog-post container">
     <router-link to="/blog">back to blog</router-link>
-    <h1 v-if="post.data.title">{{ post.data.title }}</h1>
+    <h1>{{ post.data.title }}</h1>
     <div class="body-container" v-html="post.data.body"></div>
   </div>
 </template>
@@ -12,10 +12,15 @@ const butter = Butter('ec300bc1c5bd2d864c4ee6b04dfcea12e36c75b6');
 
 export default {
     name: 'blog-post',
-    data() {
+    data: function() {
       return {
-        post: {}
+        post: {
+          data: {}
+			  }
       }
+    },
+    created() {
+      this.getPost()
     },
     methods: {
       getPost() {
@@ -28,9 +33,6 @@ export default {
           })
       }
     },
-    created() {
-      this.getPost()
-    }
 }
 </script>
 
@@ -38,7 +40,7 @@ export default {
 .body-container {
   max-width: 800px;
 
-  figure.image {
+  .image {
     width: 100%;
     margin: 40px 0;
   }

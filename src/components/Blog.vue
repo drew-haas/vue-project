@@ -1,14 +1,17 @@
 <template>
-  <div class="blog">
-		<div class="hero container">
+  <div class="blog container">
+		<div class="hero">
 			<h1>Blog</h1>
 		</div>
-		<div class="blog-container container">
-			<div v-for="item in posts" :key="item.id" class="blog-item">
+		<div class="card-container">
+			<div v-for="item in posts" :key="item.id" class="card">
         <router-link :to="'/blog/' + item.slug">
-          <div class="date">{{ item.created | moment('MMMM Do YYYY')}}</div>
-          <div class="title">{{ item.title | capitalize}}</div>
-          <div class="summary">{{ item.summary }}</div>
+          <div class="card-image" v-bind:style="{ 'background-image': 'url(' + item.featured_image + ')' }"></div>
+          <div class="card-copy-container">
+            <div class="date">{{ item.created | moment('MMMM Do YYYY')}}</div>
+            <div class="card-title">{{ item.title | capitalize}}</div>
+            <div class="summary">{{ item.summary }}</div>
+          </div>
         </router-link>
 			</div>
 		</div>
@@ -39,15 +42,14 @@ export default {
 		}
 	},
 	created() {
-		this.getPosts()
+		this.getPosts();
 	}
 };
 </script>
 
-<style lang="scss">
-.blog-item {
-	text-align: left;
-	margin: 0 auto 60px;
+<style lang="scss" scoped>
+h1 {
+  margin-bottom: 0;
 }
 </style>
 

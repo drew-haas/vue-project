@@ -10,13 +10,15 @@
 
     <div class="section projects container">
       <h2>Featured Projects</h2>
-      <div class="featured-container">
-        <div v-for="item in page.fields.featured_projects" :key="item.id" class="project-row">
-          <div class="row-item">
-            <div class="title">{{item.title}}</div>
-            <img :src="item.image" :alt="item.title + ' Project Image'" class="project-image">
-            <div class="date">{{item.date | moment('MMDDYYYY')}}</div>
-          </div>
+      <div class="card-container">
+        <div v-for="item in page.fields.featured_projects" :key="item.id" class="card">
+          <router-link :to="'/projects/' + item.slug">
+            <div class="card-image" v-bind:style="{ 'background-image': 'url(' + item.image + ')' }"></div>
+            <div class="card-copy-container">
+              <div class="card-title">{{ item.title }}</div>
+              <div class="date">{{ item.date | moment('MMMM Do YYYY')}}</div>
+            </div>
+          </router-link>
         </div>
       </div>
     </div>
@@ -109,14 +111,6 @@ export default {
       width: 100%;
       transform: scaleX(-1);
     }
-  }
-}
-
-.featured-container {
-  padding: 100px 0;
-  
-  img {
-    max-width: 100%;
   }
 }
 
